@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-amy = User.create!(username: "TheAmyPosten", password: "test1", name: "Amy Posten", email: "amy@amy.com", age: 21, friends_count: 13432, pokes_count: 1234, messages_count: 1310, city: "", state: "", bio: "", hobbies: "", likes: "", imgurl: "")
+amy = User.create(username: "TheAmyPosten", password: "test1", name: "Amy Posten", email: "amy@amy.com", age: 21, friends_count: 13432, pokes_count: 1234, messages_count: 1310, city: "", state: "", bio: "", hobbies: "", likes: "", imgurl: "")
 
 jesse = User.create(username: "OJAH", password: "test2", name: "Jesse Harlan", email: "jharlan628@gmail.com", age: 33, friends_count: 3432, pokes_count: 234, messages_count: 310, city: "Brooklyn", state: "New York", bio: " ¯|_(ツ)_|¯ ", hobbies: "Magnets", likes: "Ghouls", imgurl: "https://ojah88.github.io/Good-Doggos/3.jpeg")
 
