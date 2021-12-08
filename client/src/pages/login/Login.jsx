@@ -2,6 +2,7 @@ import "./login.css"
 import { useState } from "react"
 import React, { useParams } from "react-router"
 import useFetch from "../../useFetch"
+import { useNavigate } from "react-router-dom"; 
 
 export default function Login( {onLogin}) {
     const [username, setUsername] = useState('')
@@ -10,6 +11,7 @@ export default function Login( {onLogin}) {
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState([]);
+    const navigate = useNavigate();  
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -28,7 +30,8 @@ export default function Login( {onLogin}) {
             } else {
               r.json().then((err) => setErrors(err.errors));
             }
-          });
+            navigate('/me');
+          }, 600);
         }
 
 

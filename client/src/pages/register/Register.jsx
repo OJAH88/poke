@@ -26,6 +26,7 @@ const handleSubmit = (e) => {
             body: JSON.stringify(newUser)
         }).then(() => {
             console.log("New User Added")
+            console.log(newUser)
             setIsLoading(false)
             navigate('/');
         })
