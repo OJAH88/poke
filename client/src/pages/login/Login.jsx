@@ -9,9 +9,11 @@ export default function Login( {onLogin}) {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState([]);
 
     function handleSubmit(e) {
         e.preventDefault();
+        setIsLoading(true);
         fetch("/login", {
           method: "POST",
           headers: {
@@ -19,9 +21,15 @@ export default function Login( {onLogin}) {
           },
           body: JSON.stringify({ username }),
         })
-          .then((r) => r.json())
-          .then((user) => onLogin(user));
-      }
+        .then((r) => {
+            setIsLoading(false);
+            if (r.ok) {
+              r.json().then((user) => onLogin(user));
+            } else {
+              r.json().then((err) => setErrors(err.errors));
+            }
+          });
+        }
 
 
     return(

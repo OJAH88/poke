@@ -16,10 +16,10 @@ function App() {
   return (
   <BrowserRouter>
     <div className="App">
-      <Topbar />
+      {/* <Topbar /> */}
       <div className="content">
         <Routes>
-          <Route exact path="/" element={<Feed />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/me" element={<Profile />} />

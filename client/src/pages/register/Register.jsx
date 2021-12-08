@@ -10,15 +10,17 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordAgain, setPasswordAgain] = useState('')
+    const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();  
     const newUser = { username, email, password, passwordAgain}
 
 const handleSubmit = (e) => {
     e.preventDefault()
+    setErrors([])
     setIsLoading(true);
     setTimeout(() => {
-        fetch('http://localhost:4000/users', {
+        fetch('/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
