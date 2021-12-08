@@ -2,7 +2,7 @@ import "./register.css"
 import { useState } from "react"
 import React, { useParams } from "react-router"
 import useFetch from "../../useFetch"
-
+import { useNavigate } from "react-router-dom"; 
 
 
 const Register = () => {
@@ -11,14 +11,12 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [passwordAgain, setPasswordAgain] = useState('')
     const [isLoading, setIsLoading] = useState(false);
-
+    const navigate = useNavigate();  
+    const newUser = { username, email, password, passwordAgain}
 
 const handleSubmit = (e) => {
     e.preventDefault()
-    const newUser = { username, email, password, passwordAgain}
-
     setIsLoading(true);
-
     setTimeout(() => {
         fetch('http://localhost:4000/users', {
             method: 'POST',
@@ -27,6 +25,7 @@ const handleSubmit = (e) => {
         }).then(() => {
             console.log("New User Added")
             setIsLoading(false)
+            navigate('/');
         })
     },600)}
 
