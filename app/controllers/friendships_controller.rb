@@ -1,18 +1,27 @@
 class FriendshipsController < ApplicationController
-    protect_from_forgery with: :exception
+
   def create
-      #is this bulk addition or individual addition?
-      if params.include?(:friend_id) #individual e.g. "Add friend" link
-        @new_friendships = Friendship.create_reciprocal_for_ids(current_user_id, params[:friend_id])
-      else
-        params[:user][:friend_ids].each do |f_id|
-        @new_friendships = Friendship.create_reciprocal_for_ids(current_user_id, f_id)
-        end
-      end
-      redirect_to users_path
-    end
-  def destroy
-      Friendship.destroy_reciprocal_for_ids(current_user_id, params[:friend_id])
-      redirect_to(request.referer)
-    end
+    friendship = Friendship.create!(friendship_params)
+    render json: friendship, status: :created
+    friendship.save!
   end
+
+  def show
+    friendship = Friendship.find(friendship_params)
+    render json: friendship
+  end
+
+  def destroy
+    friendship = Friendship.find(friendship_params)
+    friendship.destroy 
+    head :no_content
+  end
+
+  private
+
+  def friendship_params
+    params.permit(:user_id, :friend_id, :confirmed)
+  end
+
+   
+end
