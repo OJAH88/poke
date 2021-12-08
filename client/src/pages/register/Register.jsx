@@ -1,6 +1,38 @@
 import "./register.css"
+import { useState } from "react"
+import React, { useParams } from "react-router"
+import useFetch from "../../useFetch"
 
-export default function Register() {
+
+
+const Register = () => {
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [passwordAgain, setPasswordAgain] = useState('')
+    const [isLoading, setIsLoading] = useState(false);
+
+
+const handleSubmit = (e) => {
+    e.preventDefault()
+    const newUser = { username, email, password, passwordAgain}
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+        fetch('http://localhost:4000/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newUser)
+        }).then(() => {
+            console.log("New User Added")
+            setIsLoading(false)
+        })
+    },600)}
+
+
+
+
     return(
         <div className="login">
             <div className="loginWrapper">
@@ -10,15 +42,19 @@ export default function Register() {
                 </div>
                 <div className="loginRight">
                     <div className="loginBox">
-                        <input placeholder="Username" className="loginInput" />
-                        <input placeholder="Email" className="loginInput" />
-                        <input placeholder="Password" className="loginInput" />
-                        <input placeholder="Password Again" className="loginInput" />
+                        <form onSubmit={handleSubmit}>
+                        <input placeholder="Username" className="loginInput" type="text" required value={username} onChange={(e) => setUsername(e.target.value)}/> <br />
+                        <input placeholder="Email" className="loginInput" type="email" required value={email} onChange={(e) => setEmail(e.target.value)}/> <br />
+                        <input placeholder="Password" className="loginInput" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} /> <br />
+                        <input placeholder="Confirm Password" className="loginInput" type="password" required value={passwordAgain} onChange={(e) => setPasswordAgain(e.target.value)}/> <br />
                         <button className="loginButton">Sign Up</button>
                         <button className="loginRegisterButton">Log into Account</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     )
-}
+    
+    }
+    export default Register

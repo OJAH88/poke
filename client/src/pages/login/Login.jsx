@@ -1,6 +1,15 @@
 import "./login.css"
+import { useState } from "react"
+import React, { useParams } from "react-router"
+import useFetch from "../../useFetch"
 
 export default function Login() {
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [isLoading, setIsLoading] = useState(false);
+
+
     return(
         <div className="login">
             <div className="loginWrapper">
