@@ -7,7 +7,7 @@ import React, { useHistory, useParams } from "react-router"
 
 
 function App() {
-  return <Register/>
+  return <Login/>
 }
 
 export default App;
