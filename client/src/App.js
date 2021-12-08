@@ -13,23 +13,20 @@ import React, { useHistory, useParams } from "react-router"
 
 function App() {
 
-  // return (
-  // <BrowserRouter>
-  //   <div className="App">
-  //     <Topbar />
-  //     <div className="content">
-  //       <Routes>
-  //         <Route path="/" element={<Feed />} />
-  //         <Route path="/signup" element={<Register />} />
-  //         <Route path="/login" element={<Login />} />
-  //         <Route path="/me" element={<Profile />} />
-  //       </Routes>
-  //       </div>
-  //       </div>
-  // </BrowserRouter>
-  // )}
-
-  return <Profile />
-}
+  return (
+  <BrowserRouter>
+    <div className="App">
+      <Topbar />
+      <div className="content">
+        <Routes>
+          <Route exact path="/" element={<Feed />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/me" element={<Profile />} />
+        </Routes>
+        </div>
+        </div>
+  </BrowserRouter>
+  )}
 
 export default App;
