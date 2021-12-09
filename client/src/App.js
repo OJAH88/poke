@@ -8,11 +8,12 @@ import Profile from "./pages/profile/Profile";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {useState, useEffect} from 'react'
 import React, { useHistory, useParams } from "react-router"
+import useFetch from "./useFetch"
 
 
 
 function App() {
-
+const {error, isLoading, data} = useFetch('http://localhost:3000/')
   return (
   <BrowserRouter>
     <div className="App">

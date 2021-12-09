@@ -60,12 +60,14 @@
       align-items: center;   
   }
   
-  .likeIcon{
-      width: 24px;
-      height: 24px;
-      margin-right: 5px;
-      cursor: pointer;
-  }
+  .pokeIcon {
+    width: 36px;
+    height: 36px;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: lightpink;
+    border-radius: 50%;
+}
   
   .postLikeCounter{
       font-size: 15px;

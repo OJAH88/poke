@@ -81,7 +81,7 @@ const handleSubmit = (e) => {
                 onChange={(e) => setPasswordAgain(e.target.value)}
               />{" "}
               <br />
-              <button className="loginButton">Sign Up</button>
+              <button className="loginButton">Sign Up</button><br />
               <button className="loginRegisterButton">Log into Account</button>
             </form>
           </div>

@@ -1,4 +1,4 @@
-class PokesController < ApplicationController
+class Api::PokesController < ApplicationController
 
     def create
         poke = Poke.create!(poke_params)

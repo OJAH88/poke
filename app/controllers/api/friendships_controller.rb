@@ -1,4 +1,4 @@
-class FriendshipsController < ApplicationController
+class Api::FriendshipsController < ApplicationController
 
   def create
     friendship = Friendship.create!(friendship_params)
@@ -11,6 +11,12 @@ class FriendshipsController < ApplicationController
     render json: friendship
   end
 
+  def index
+    friendships = Friendship.all
+    render json: friendships
+  end
+  
+
   def destroy
     friendship = Friendship.find(friendship_params)
     friendship.destroy 
@@ -20,7 +26,7 @@ class FriendshipsController < ApplicationController
   private
 
   def friendship_params
-    params.permit(:user_id, :friend_id, :confirmed)
+    params.permit(:id)
   end
 
    

@@ -1,5 +1,5 @@
-class UsersController < ApplicationController
-    skip_before_action :authorize
+class Api::UsersController < ApplicationController
+    # skip_before_action :authorize
   
     def create
       user = User.create!(user_params)
@@ -9,6 +9,11 @@ class UsersController < ApplicationController
       else
         render json: user.errors.full_messages, status: :unprocessable_entity
         end
+    end
+
+    def index
+      users = User.all
+      render json: users
     end
 
     def show

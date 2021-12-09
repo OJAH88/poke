@@ -1,4 +1,4 @@
-class PostCommentsController < ApplicationController
+class Api::PostCommentsController < ApplicationController
     def create
         postcomment = Postcomment.create!(postcomment_params)
         render json: postcomment, status: :created
